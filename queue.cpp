@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+//there are drawbacks using array for array 
+
 class Queue{
   private:
     int front;
