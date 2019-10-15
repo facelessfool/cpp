@@ -60,4 +60,7 @@ int main(){
   q.enqueue(20);
   q.enqueue(30);
   q.Display();
+  q.dequeue();
+  cout<<"queue after dequeue"<<endl;
+  q.Display();
 }
