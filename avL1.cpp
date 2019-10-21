@@ -19,17 +19,32 @@ int NodeHeight(struct Node *p){
 }
 
 int BalanceFactor(struct Node *p){
-    hl=p &&p->lchild?p->lchild->height:0;
-    hr=p &&p->rchild?p->rchild->height:0;
+    int hl,hr;
+    hl=p && p->lchild?p->lchild->height:0;
+    hr=p && p->rchild?p->rchild->height:0;
 
     return hl-hr;
 
 }
 
 struct Node * LLrotation(struct Node *p){
-    struct Node *pl=p->lchild;
-    struct Node *plr=pl->lchild;
 
+    struct Node *pl=p->lchild;
+    struct Node *plr=p->rchild;
+
+    //          p                                           pl
+    //         /  \     this changes to                    / \
+    //        pl                                             p
+    //       / \                                            / \
+    //          plr                                       plr
+
+//height of plr will remain same
+    pl->rchild=p;
+    p->lchild=plr;
+    p->height=NodeHeight(p);
+    pl->height=NodeHeight(pl);
+    if(root==p)
+        root=pl;
 
 };
 
@@ -50,7 +65,7 @@ struct Node *RInsert(struct Node *p,int key){
         p->lchild=RInsert(p->lchild,key);
     else if(key>p->data)
         p->rchild=RInsert(p->rchild,key);
-    p->height=NodeHeight(p);
+    p->height=NodeHeight(p);  //This updates the height of the tree after insertion
 
 
     if(BalanceFactor(p)==2 && BalanceFactor(p->lchild)==1)
@@ -68,3 +83,8 @@ struct Node *RInsert(struct Node *p,int key){
 
 }
 
+int main(){
+    root =RInsert(root,10);
+    RInsert(root,4);
+    RInsert(root,2);
+}
