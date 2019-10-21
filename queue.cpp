@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//there are drawbacks using array for array 
+//there are drawbacks using array for queue
 
 class Queue{
   private:
