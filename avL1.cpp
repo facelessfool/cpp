@@ -70,15 +70,17 @@ struct Node *RInsert(struct Node *p,int key){
 
     if(BalanceFactor(p)==2 && BalanceFactor(p->lchild)==1)
         return LLrotation(p);
-    else if(BalanceFactor(p)==2 && BalanceFactor(p->rchild)==-1)
-        return LRrotation(p);
+//I have to code the three functions below
+
+   /* else if(BalanceFactor(p)==2 && BalanceFactor(p->rchild)==-1)      
+    return LRrotation(p);
     else if(BalanceFactor(p)=-2 && BalanceFactor(p->rchild)==-1)
         return RRrotation(p);
     else if(BalanceFactor(p)=-2 && BalanceFactor(p->rchild)==1)
         return RLrotation(p);
 
 
-
+    */
     return p;
 
 }
